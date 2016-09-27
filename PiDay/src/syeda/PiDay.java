@@ -50,8 +50,8 @@ public class PiDay {
 		while (counter > 0) {
 			if (counter == 1){
 				// When n is one, n gets all of the pie
-				System.out.println("Since there is only one person, they can have all the pieces.");
-				System.out.println("More specifically, they can have, " + k);
+				System.out.println("Since there is only one person, she can have all the pieces.");
+				System.out.println("More specifically, she can have, " + k);
 			}
 			else if (k == counter) {
 				// When n is equal to k, everyone gets only one piece of pie.
@@ -69,14 +69,16 @@ public class PiDay {
 	 * @param counter
 	 * @param k
 	 * @return
+	 * 
 	 */
 
 	public static int pieDay(int counter, int k){
 		int [] math;
 		math = new int [counter];
 		
+		// This for loop adds all of the pieces of pie into the math array. 
 		for (int l = 0; l <= counter; l++) {
-			math[l];
+			math [l];
 		}
 			
 		return k;
