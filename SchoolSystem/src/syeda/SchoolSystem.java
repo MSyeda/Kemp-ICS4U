@@ -1,6 +1,16 @@
 package syeda;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
+/**
+ * 
+ * @author Maryam Syeda
+ * Date Started: Wednesday, September 28, 2016
+ * Date of  Completion: Coming soon to a program near you!
+ * 
+ *
+ */
 
 public class SchoolSystem {
 
@@ -11,7 +21,6 @@ static ArrayList <Student> studRecs = new ArrayList <Student> ();
 
 
 /**
- * @author Maryam Syeda
  * @param args
  */
 	public static void main(String[] args) {
@@ -152,7 +161,7 @@ static ArrayList <Student> studRecs = new ArrayList <Student> ();
 			System.out.println("Enter numbers only. ");
 		}
 		
-		studRecs.add(new Student());
+		studRecs.add(student);
 		
 		backToMainMenu();
 	}
@@ -174,7 +183,7 @@ static ArrayList <Student> studRecs = new ArrayList <Student> ();
 		
 		for(int i = 0; i < studRecs.size(); i++)
 		{
-			
+			System.out.println(studRecs.get(i).getFirstName());
 		}
 		
 		backToMainMenu();
