@@ -25,13 +25,13 @@ public class Student {
 	}
 	
 	// Phone Number Object Blueprint
-	private int phoneNum;
+	private long phoneNum;
 	
-	public void setphoneNum(int phoneNum) {
+	public void setphoneNum(long phoneNum) {
 		this.phoneNum = phoneNum;
 	}
 	
-	public int phoneNum() {
+	public long phoneNum() {
 		return this.phoneNum;
 	}
 	
@@ -79,10 +79,34 @@ public class Student {
 		return this.prov;
 	}
 	
-	// Postal Code Object Blueprint
+	// Postal Code Object Blueprint (Array?)
+	// For the numbers
+	private int [] numPostal = new int [3];
+	
+	public int [] getNumPostal() {
+		return numPostal;
+	}
+
+	public void setNumPostal(int [] numPostal) {
+		this.numPostal = numPostal;
+	}
+	
+	// For the letters
+	private char [] letterPostal = new char [3];
 	
 
-	// Birth Month Object Bluepint
+	public char [] getLetterPostal() {
+		return letterPostal;
+	}
+
+	public void setLetterPostal(char [] letterPostal) {
+		this.letterPostal = letterPostal;
+	}
+	
+	// Putting the postal code together
+	
+
+	// Birth Month Object Blueprint
 	private String bmonth;
 	
 	public void setbmonth (String bmonth){
@@ -114,6 +138,9 @@ public class Student {
 	public int byear(){
 		return this.byear;
 	}
+
+
+
 	
 	
 	
