@@ -19,6 +19,9 @@ static int option;
 
 static ArrayList <Student> studRecs = new ArrayList <Student> ();
 
+public static int indexOf(Object o) {
+	return 0;
+}
 
 /**
  * @param args
@@ -89,13 +92,13 @@ static ArrayList <Student> studRecs = new ArrayList <Student> ();
 		// Asking for the first name of student1		
 		Student student = new Student(); // instantiation
 		System.out.println("Please enter your first name: ");
-		student.setFirstName(scn.nextLine());
+		student.setfirstName(scn.nextLine());
 		System.out.println(student.getFirstName());
 
 		// Asking for the last name of student1
 		System.out.println("Thank you, " + student.getFirstName());
 		System.out.println("Now enter your last name: ");
-		student.setLastName(scn.nextLine());
+		student.setlastName(scn.nextLine());
 
 		// Asking for the phone number
 		System.out.println(student.getFirstName() + ", now enter your 10 - digit phone number");
@@ -134,7 +137,7 @@ static ArrayList <Student> studRecs = new ArrayList <Student> ();
 
 		// Postal Code
 		System.out.println("Enter your postal code: ");
-
+		student.setpostal(scn.next());
 
 		//System.out.println("This is what you entered: " + student1.get);
 
@@ -171,8 +174,16 @@ static ArrayList <Student> studRecs = new ArrayList <Student> ();
 	 */
 	
 	public static void findStud () {
-		System.out.print("How would you like to search for your student?");
+		System.out.println("How would you like to search for your student?");
+		System.out.println("1. First Name ");
+		System.out.println("2. Last Name");
+		System.out.println("3. Phone Number");
 		
+		int search = Integer.parseInt(scn.nextLine());
+		if (search == 1){
+			System.out.println("Please enter the first name of your student: ");
+			indexOf(scn.nextLine());
+		}
 	}
 	
 	/**
@@ -191,16 +202,20 @@ static ArrayList <Student> studRecs = new ArrayList <Student> ();
 
 	public static void backToMainMenu (){
 		
-		System.out.println("That is it, go back to the main menu? (y/n) ");
-		String main = scn.nextLine();
+		System.out.println("That is it, go back to the main menu? (0 = No; 1 = Yes) ");
+		int main = Integer.parseInt(scn.nextLine());
 		
-		if (main == "n"){
+		if (main == Integer.parseInt("0")){
 			System.out.println("I am done with the TDSB");
 			// quit the program
-			System.exit(0);
+			System.exit(main);
 		}
 		else {
 			main(null);
 		}
 	}
 }
+
+
+
+
