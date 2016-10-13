@@ -4,6 +4,13 @@ public class Student implements comparable{
 
 	private static long IdGenerator = 300000000;
 	
+	for (int i = 0; i <= student; i++) {
+		IdGenerator++;
+	}
+	
+	int var1 = 0;
+	int var2 = 1;
+	int var3 = 2; 
 			
 	public Student(){
 		
@@ -18,9 +25,18 @@ public class Student implements comparable{
 		setbmonth(""); // set birth month
 		setbday(bday); // set birth day
 		setbyear(byear); // set birth year
+		setIdGenerator(IdGenerator); // sets the student Id
 	}
 
 
+	// Student Number Blueprint
+	public void setIdGenerator(long IdGenerator) {
+		Student.IdGenerator = IdGenerator;
+	}
+	public long getIdGenerator(){
+		return Student.IdGenerator;
+	}
+	
 	// First Name Object Blueprint
 	private String firstName;
 
@@ -51,7 +67,7 @@ public class Student implements comparable{
 		this.phoneNum = phoneNum;
 	}
 
-	public long phoneNum() {
+	public long getphoneNum() {
 		return this.phoneNum;
 	}
 
@@ -171,9 +187,6 @@ public class Student implements comparable{
 		return this.byear;
 	}
 
-
-
-
 	public Student(String firstName, String lastName){
 		setfirstName(firstName);
 		setlastName(lastName);
@@ -204,7 +217,7 @@ public class Student implements comparable{
 	
 	public String toString () {
 
-		return var1 + "," var2 + "," + var3;
+		return var1 + "," + var2 + "," + var3;
 	}
 
 }

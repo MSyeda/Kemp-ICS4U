@@ -1,6 +1,8 @@
 package syeda;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -36,8 +38,9 @@ public static int indexOf(Object o) {
 		do {
 			System.out.println("Choose one option: ");
 			System.out.println("1. Enter a new student ");
-			System.out.println("2. Find Student"); // This will display a sub-menu to print or remove student
+			System.out.println("2. Find a Student"); // This will display a sub-menu to print or remove student
 			System.out.println("3. Print all the students");
+			System.out.println("4. Sort Students");
 			System.out.println("10. Quit ");
 			
 			do {
@@ -58,7 +61,9 @@ public static int indexOf(Object o) {
 				
 				printAllStuds();
 			}
-			
+			else if (option == 4){
+				
+			}
 			else if (option == 10){
 				
 				System.exit(option);
@@ -164,6 +169,10 @@ public static int indexOf(Object o) {
 			System.out.println("Enter numbers only. ");
 		}
 		
+		IdGenerator = student.setIdGenerator(IdGenerator ++);
+		student.setIdGenerator; 
+		
+		
 		studRecs.add(student);
 		
 		backToMainMenu();
@@ -174,15 +183,15 @@ public static int indexOf(Object o) {
 	 */
 	
 	public static void findStud () {
-		System.out.println("How would you like to search for your student?");
-		System.out.println("1. First Name ");
-		System.out.println("2. Last Name");
-		System.out.println("3. Phone Number");
-		
+		System.out.println("Please enter the student number of your student.");
+		student.getIdGenerator();
+		System.out.println("Is this the student you were looking for? (1/0)");
 		int search = Integer.parseInt(scn.nextLine());
 		if (search == 1){
-			System.out.println("Please enter the first name of your student: ");
-			indexOf(scn.nextLine());
+			System.out.println("Please try again");
+		}
+		else {
+			System.out.println(getstudent);
 		}
 	}
 	
@@ -213,6 +222,10 @@ public static int indexOf(Object o) {
 		else {
 			main(null);
 		}
+	}
+	
+	public static void sortStudents () {
+		//Collections.sort(studRecs);
 	}
 }
 
