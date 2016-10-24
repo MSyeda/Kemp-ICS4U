@@ -2,12 +2,6 @@ package syeda;
 
 public class Student implements comparable{
 
-	private static long IdGenerator = 300000000;
-	
-	for (int i = 0; i <= student; i++) {
-		IdGenerator++;
-	}
-	
 	int var1 = 0;
 	int var2 = 1;
 	int var3 = 2; 
@@ -25,17 +19,17 @@ public class Student implements comparable{
 		setbmonth(""); // set birth month
 		setbday(bday); // set birth day
 		setbyear(byear); // set birth year
-		setIdGenerator(IdGenerator); // sets the student Id
+		//setIdGenerator(IdGenerator); // sets the student Id
 	}
 
-
-	// Student Number Blueprint
-	public void setIdGenerator(long IdGenerator) {
-		Student.IdGenerator = IdGenerator;
-	}
-	public long getIdGenerator(){
-		return Student.IdGenerator;
-	}
+//
+//	// Student Number Blueprint
+//	public void setIdGenerator(long IdGenerator) {
+//		Student.IdGenerator = IdGenerator;
+//	}
+//	public long getIdGenerator(){
+//		return Student.IdGenerator;
+//	}
 	
 	// First Name Object Blueprint
 	private String firstName;

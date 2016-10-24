@@ -21,6 +21,8 @@ static int option;
 
 static ArrayList <Student> studRecs = new ArrayList <Student> ();
 
+private static long IdGenerator = 300000000;
+
 public static int indexOf(Object o) {
 	return 0;
 }
@@ -66,6 +68,7 @@ public static int indexOf(Object o) {
 			}
 			else if (option == 10){
 				
+				System.out.println("Done.");
 				System.exit(option);
 			}
 			
@@ -169,12 +172,8 @@ public static int indexOf(Object o) {
 			System.out.println("Enter numbers only. ");
 		}
 		
-		IdGenerator = student.setIdGenerator(IdGenerator ++);
-		student.setIdGenerator; 
-		
-		
+		IdGenerator++; 
 		studRecs.add(student);
-		
 		backToMainMenu();
 	}
 	
@@ -184,20 +183,22 @@ public static int indexOf(Object o) {
 	
 	public static void findStud () {
 		System.out.println("Please enter the student number of your student.");
-		student.getIdGenerator();
-		System.out.println("Is this the student you were looking for? (1/0)");
+		String studNumber = scn.nextLine();
+		//studRecs.get
+		//studRecs.IdGenerator();
+		System.out.println("Is this the student you were looking for? (1 = YES / 0 = NO)");
 		int search = Integer.parseInt(scn.nextLine());
 		if (search == 1){
 			System.out.println("Please try again");
 		}
 		else {
-			System.out.println(getstudent);
+			//System.out.println(getstudent);
 		}
 	}
 	
 	/**
 	 * 
-	 */
+	 */         
 	
 	public static void printAllStuds () {
 		
