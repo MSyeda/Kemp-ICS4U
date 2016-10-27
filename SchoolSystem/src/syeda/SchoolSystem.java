@@ -51,9 +51,9 @@ public class SchoolSystem {
 
 					if (option == 1){
 
-						
-						
-						
+
+
+
 						addStudent();
 					}
 
@@ -142,11 +142,11 @@ public class SchoolSystem {
 			}
 		}
 		while (flag);
-		
+
 		//TODO: Use calender for the birthday information!
-		
+
 		//Before asking for any additional info, student must be 13 & 18 years old
-		
+
 		int studAgeVer = 2016 - student.getbyear();
 		if (studAgeVer < 13){
 			int waitTime = 13 - studAgeVer;
@@ -165,7 +165,7 @@ public class SchoolSystem {
 			System.out.println("You are too old to apply to High School, sorry!");
 			System.exit(exit);
 		}
-		
+
 		// Asking for the phone number
 		System.out.println(student.getFirstName() + ", now enter your 10 - digit phone number");
 		do {
@@ -179,8 +179,8 @@ public class SchoolSystem {
 			}
 		}
 		while (flag);
-		
-		
+
+
 		// Asking for the Street Address
 		System.out.println("Name of Home Street: ");
 		student.setstreetName(scn.nextLine());
@@ -213,13 +213,13 @@ public class SchoolSystem {
 
 		//System.out.println("This is what you entered: " + student1.get);
 
-		
 
+		student.setstudentNumber(IdGenerator++);
 		IdGenerator++; 
 		studRecs.add(student);
 		System.out.println("This is " + student.getFirstName() + "'s student id: ");
 		// should be able to display the student number
-		
+
 		backToMainMenu();
 	}
 

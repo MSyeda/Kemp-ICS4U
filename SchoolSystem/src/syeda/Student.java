@@ -8,6 +8,7 @@ public class Student implements comparable{
 			
 	public Student(){
 		
+		setstudentNumber(studentNumber); // sets the student number
 		setfirstName(""); // set first name
 		setlastName(""); // set last name
 		setphoneNum(phoneNum); // set phone number
@@ -213,6 +214,14 @@ public class Student implements comparable{
 
 		return var1 + "," + var2 + "," + var3;
 	}
+
+	public void setstudentNumber(long l) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public long studentNumber;
+	
 
 }
 
