@@ -177,7 +177,7 @@ public class Student implements comparable{
 		this.byear = byear;
 	}
 
-	public int byear(){
+	public int getbyear(){
 		return this.byear;
 	}
 
