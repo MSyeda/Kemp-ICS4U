@@ -1,228 +1,219 @@
 package syeda;
 
-public class Student implements comparable{
+public class Student implements Comparable{
 
-	int var1 = 0;
-	int var2 = 1;
-	int var3 = 2; 
-			
-	public Student(){
-		
-		setstudentNumber(studentNumber); // sets the student number
-		setfirstName(""); // set first name
-		setlastName(""); // set last name
-		setphoneNum(phoneNum); // set phone number
-		setstreetName(""); // set street name
-		setstreetNum(streetNum); // set street number
-		setcity(""); // set city
-		setprov(""); // set province
-		setpostal(""); // set postal code
-		setbmonth(""); // set birth month
-		setbday(bday); // set birth day
-		setbyear(byear); // set birth year
+	private String firstName;
+	private String lastName;
+	private long phoneNum;
+	private String streetName;
+	private String city;
+	private ProvinceTerr prov;
+	private String postal;
+	private String bmonth;
+	private int bday;
+	private int byear;
+	private static long IdGenerator = 300000000;
+	private static long studNumber = IdGenerator;
+
+	public Student(String fName, String lName, Long pNum, String homeAdd, String hCity, String hProv, String hCode, String birthMonth, int birthDay, int birthYear){
+		setFirstName(fName); 
+		setLastName(lName); 
+		setPhoneNum(pNum); 
+		setStreetName(homeAdd); 
+		setCity(hCity); 
+		setProv(ProvinceTerr.ONTARIO); 
+		setPostal(hCode); 
+		setBmonth(birthMonth); 
+		setBday(birthDay); 
+		setByear(birthYear); 
+		setStudNumber(); 
 		//setIdGenerator(IdGenerator); // sets the student Id
 	}
 
-//
-//	// Student Number Blueprint
-//	public void setIdGenerator(long IdGenerator) {
-//		Student.IdGenerator = IdGenerator;
-//	}
-//	public long getIdGenerator(){
-//		return Student.IdGenerator;
-//	}
-	
-	// First Name Object Blueprint
-	private String firstName;
-
-	public void setfirstName (String firstName){
+	/**
+	 * 
+	 * @param firstName
+	 */
+	public void setFirstName (String firstName){
 		this.firstName = firstName;
 	}
-
+	/**
+	 * 
+	 * @return the firstName
+	 */
 	public String getFirstName() {
 		return this.firstName;
 	}
-
-	// Last Name Object Blueprint
-	private String lastName;
-
-	public void setlastName(String lastName) {
+	/**
+	 * 
+	 * @param lastName
+	 */
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-	public String getlastName() {
+	/**
+	 * 
+	 * @return the last
+	 */
+	public String getLastName() {
 		return this.lastName;
 	}
-
-	// Phone Number Object Blueprint
-	private long phoneNum;
-
-	public void setphoneNum(long phoneNum) {
-		
+	/**
+	 * 
+	 * @param phoneNum
+	 */
+	public void setPhoneNum(long phoneNum) {
 		this.phoneNum = phoneNum;
 	}
-
-	public long getphoneNum() {
+	/**
+	 * 
+	 * @return the phoneNum
+	 */
+	public long getPhoneNum() {
 		return this.phoneNum;
 	}
-
-	// Street Name Object Blueprint
-	private String streetName;
-
-	public void setstreetName (String streetName){
+	/**
+	 * 
+	 * @param streetName
+	 */
+	public void setStreetName (String streetName){
 		this.streetName = streetName;
 	}
-
-	public String getstreetName(){
+	/**
+	 * 
+	 * @return the streetName
+	 */
+	public String getStreetName(){
 		return this.streetName;
 	}
-
-	// Street Number Object Blueprint
-	private int streetNum;
-
-	public void setstreetNum (int streetNum){
-		this.streetNum = streetNum;
-	}
-
-	public int getstreetNum(){
-		return this.streetNum;
-	}
-
-	// City Object Blueprint
-	private String city;
-
-	public void setcity (String city){
+	/**
+	 * 
+	 * @param city
+	 */
+	public void setCity (String city){
 		this.city = city;
 	}
-
-	public String getcity(){
+	/**
+	 * 
+	 * @return city
+	 */
+	public String getCity(){
 		return this.city;
 	}
-
-	// Province Object Blueprint
-	private String prov;
-
-	public void setprov (String prov){
+	/**
+	 * 
+	 * @param prov
+	 */
+	public void setProv (ProvinceTerr prov){
 		this.prov = prov;
 	}
-
-	public String prov(){
+	/**
+	 * 
+	 * @return prov
+	 */
+	public ProvinceTerr getProv(){
 		return this.prov;
 	}
-
-	// Postal Code Object Blueprint (Array? No)
-
-	private String postal;
-
-	public void setpostal (String postal){
+	/**
+	 * 
+	 * @param postal
+	 */
+	public void setPostal (String postal){
 		this.postal = postal;
 	}
-
-	public String postal(){
+	/**
+	 * 
+	 * @return postal
+	 */
+	public String getPostal(){
 		return this.postal;
 	}
-
-	/*
-	// For the numbers
-	private int [] numPostal = new int [3];
-
-	public int [] getNumPostal() {
-		return numPostal;
-	}
-
-	public void setNumPostal(int [] numPostal) {
-		this.numPostal = numPostal;
-	}
-
-	// For the letters
-	private char [] letterPostal = new char [3];
-
-
-	public char [] getLetterPostal() {
-		return letterPostal;
-	}
-
-	public void setLetterPostal(char [] letterPostal) {
-		this.letterPostal = letterPostal;
-	}
-
-	// Putting the postal code together
+	/**
+	 * 
+	 * @param bmonth
 	 */
-
-	// Birth Month Object Blueprint
-	private String bmonth;
-
-	public void setbmonth (String bmonth){
+	public void setBmonth (String bmonth){
 		this.bmonth = bmonth;
 	}
-
-	public String getbmonth(){
+	/**
+	 * 
+	 * @return bmonth
+	 */
+	public String getBmonth(){
 		return this.bmonth;
 	}
-
-	// Birth Day Object Blueprint
-	private int bday;
-
-	public void setbday (int bday){
+	/**
+	 * 
+	 * @param bday
+	 */
+	public void setBday (int bday){
 		this.bday = bday;
 	}
-
-	public int getbday(){
+	/**
+	 * 
+	 * @return bday
+	 */
+	public int getBday(){
 		return this.bday;
 	}
-
-	// Birth Year Object Blueprint
-	private int byear;
-
-	public void setbyear(int byear){
+	/***
+	 * 
+	 * @param byear
+	 */
+	public void setByear(int byear){
 		this.byear = byear;
 	}
-
-	public int getbyear(){
+	/**
+	 * 
+	 * @return byear
+	 */
+	public int getByear(){
 		return this.byear;
 	}
-
-	public Student(String firstName, String lastName){
-		setfirstName(firstName);
-		setlastName(lastName);
-		setphoneNum(phoneNum);
-		setstreetName("");
-		setstreetNum(streetNum);
-		setcity("");
-		setprov("");
-		setpostal("");
-		setbmonth("");
-		setbday(bday);
-		setbyear(byear);
+	/**
+	 * 
+	 * @return
+	 */
+	public void setStudNumber () {
+		IdGenerator++;
+		studNumber++;
 	}
-	public Student(String firstName, String lastName, int phoneNum, String streetName, int streetNum, String city, String prov, String postal, String bmonth, int bday, int byear){
-
-		setfirstName(firstName);
-		setlastName(lastName);
-		setphoneNum(phoneNum);
-		setstreetName(streetName);
-		setstreetNum(streetNum);
-		setcity(city);
-		setprov(prov);
-		setpostal(postal);
-		setbmonth(bmonth);
-		setbday(bday);
-		setbyear(byear);
+	/**
+	 * 
+	 */
+	public long getStudNumber () {
+		return this.studNumber;
 	}
-	
-	public String toString () {
-
-		return var1 + "," + var2 + "," + var3;
+	/**
+	 * 
+	 * @param search
+	 * @return
+	 */
+	public String toString (Student search) {
+		return studNumber + "; " + firstName + " "  + lastName + ": " + phoneNum  + "; " + bmonth + " " + bday + ", " + byear + "; " + streetName + ", " + city + ", " + prov + ", " + postal + "; " ;
 	}
-
-	public void setstudentNumber(long l) {
-		// TODO Auto-generated method stub
-		
+	/**
+	 * 
+	 * @param j
+	 * @return
+	 */
+	public int compareTo(Object j) {
+		Student tempStudent = (Student)j;
+		return this.getLastName().compareTo(tempStudent.getLastName());
 	}
-	
-	public long studentNumber;
-	
-
+	/**
+	 * 
+	 * @param search
+	 * @return
+	 */
+	public boolean equals(Student search){
+		if (this.lastName == search.lastName) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }
 
 

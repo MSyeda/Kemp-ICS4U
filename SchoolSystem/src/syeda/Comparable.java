@@ -1,5 +1,5 @@
 package syeda;
 
-public interface comparable {
+public interface Comparable {
 
 }
