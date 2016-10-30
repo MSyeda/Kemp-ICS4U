@@ -1,5 +1,4 @@
 package syeda;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,17 +21,13 @@ import java.util.Scanner;
  */
 
 public class SchoolSystem {
-
-	
 	static int option; //find a new place for this!!!
-
 	static Scanner scn = new Scanner (System.in);
 	static ArrayList <Student> studRecs = new ArrayList <Student> (); 
 	public static File studFile = new File ("src\\students.txt");
-
-	public static FileOutputStream fileOutputStream; // hp
-	public static BufferedReader fbr; // hp
-	public static PrintStream fps; //hp
+	public static FileOutputStream fileOutputStream; 
+	public static BufferedReader fbr; 
+	public static PrintStream fps; 
 
 	/**
 	 * @param args
@@ -43,11 +38,11 @@ public class SchoolSystem {
 
 		do {
 			System.out.println("Choose one option: ");
-			System.out.println("1. Enter a new student ");
-			System.out.println("2. Find a Student"); // This will display a sub-menu to print or remove student
-			System.out.println("3. Print all the students");
-			System.out.println("4. Sort Students");
-			System.out.println("10. Quit ");
+			System.out.println("1. Enter A New Student ");
+			System.out.println("2. Find A Student");
+			System.out.println("3. Print All The students");
+			System.out.println("4. Sort All Students");
+			System.out.println("10. Quit Program ");
 
 			do {
 				try {
@@ -68,7 +63,7 @@ public class SchoolSystem {
 						printAllStuds();
 					}
 					else if (option == 4){
-
+						sortStuds();
 					}
 					else if (option == 10){
 
@@ -112,7 +107,6 @@ public class SchoolSystem {
 				try {
 					studFile.createNewFile();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}
@@ -232,11 +226,11 @@ public class SchoolSystem {
 		System.out.println("Enter province: ");
 		//String studProv = (ProvinceTerr.valueOf(scn.nextLine()));
 		student.setprov (ProvinceTerr.valueOf(((scn.nextLine())).toUpperCase()));
-		
+
 		// Postal Code
 		System.out.println("Enter your postal code: ");
 		student.setpostal((scn.nextLine()).toLowerCase());
-		
+
 
 		//System.out.println("This is what you entered: " + student1.get);
 
@@ -313,31 +307,28 @@ public class SchoolSystem {
 	 */
 	public static Student searchStudent (String lastName){
 		for (int s = 0; s < studRecs.size(); s++){
-			if (studRecs.get(s).getlastName() == lastName) {
+			if (studRecs.get(s).getLastName() == lastName) {
 				return studRecs.get(s);
 			}
 		}
 		return null;
 	}
-
 	/**
 	 * 
 	 * @param search 
 	 */
 	public static void printSearchStudent (Student search){
-		System.out.println(search.getFirstName() + " " + search.getlastName());
-		System.out.println(search.getphoneNum());
-		System.out.println(search.getbmonth() + ", " + search.getbday() + ", " + search.getbyear());
-		System.out.println(search.getphoneNum());
-		System.out.println(search.getstreetName());
-		System.out.println(search.getcity());
-		System.out.println(search.getprov());
-		System.out.println(search.getpostal());
-		System.out.println(search.getstudentNumber());
+		System.out.println(search.getFirstName() + " " + search.getLastName());
+		System.out.println(search.getPhoneNum());
+		System.out.println(search.getBmonth() + ", " + search.getBday() + ", " + search.getByear());
+		System.out.println(search.getPhoneNum());
+		System.out.println(search.getStreetName());
+		System.out.println(search.getCity());
+		System.out.println(search.getProv());
+		System.out.println(search.getPostal());
+		System.out.println(search.getStudNumber());
 		findStud();
-
 	}
-
 	/**
 	 * 
 	 * @param search
@@ -351,38 +342,79 @@ public class SchoolSystem {
 	 * 
 	 */         
 	public static void printAllStuds () {
-		
+		String [] fbrValues = null;
+		try {
+			fbrValues = fbr.readLine().split(", ");
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		for(int i = 0; i < fbrValues.length; i++){
+			System.out.println(fbrValues[i]);
+			if ((i+1)%9 == 0)
+				System.out.println();
+		}
 		for(int i = 0; i < studRecs.size(); i++)
 		{
 			printSearchStudent(studRecs.get(i));
 		}
-		 
+
 		main(null);
 	}
 
-//	/**
-//	 * 
-//	 */
-//	public static void backToMainMenu (){
-//
-//		System.out.println("Student has been added, go back to the main menu? (0 = No; 1 = Yes) ");
-//		int main = Integer.parseInt(scn.nextLine());
-//   
-//		if (main == Integer.parseInt("0")){
-//			System.out.println("Done.");
-//			// quit the program
-//			System.exit(main);
-//		}
-//		else {
-//			main(null);
-//		}
-//	}
+
 
 	/**
 	 * 
 	 */
-	public static void sortStudents () {
-		//Collections.sort(studRecs);
+	public static void sortStuds () {
+		Collections.sort(studRecs);
+		for (int i = 0; i < studRecs.size(); i++) {
+			System.out.println(studRecs.get(i).getFirstName());
+			System.out.println(studRecs.get(i).getLastName());
+			System.out.println(studRecs.get(i).getPhoneNum());
+			System.out.println(studRecs.get(i).getBmonth() + studRecs.get(i).getBday() + studRecs.get(i).getByear());
+			System.out.println(studRecs.get(i).getStreetName());
+			System.out.println(studRecs.get(i).getCity());
+			System.out.println(studRecs.get(i).getProv());
+			System.out.println(studRecs.get(i).getPostal());
+			System.out.println(studRecs.get(i).getStudNumber());
+			System.out.println();
+		}
+
+	}
+
+	public static ProvinceTerr provCheck(String input) {
+		while (true) {
+			switch (input) {
+			case"ONTARIO":
+				return ProvinceTerr.ONTARIO;
+			case"NEWFOUNDLAND AND LABRODOR":
+				return ProvinceTerr.NEWFOUNDLANDANDLABRADOR;
+			case"NOVA SCOTIA":
+				return ProvinceTerr.NOVASCOTIA;
+			case"PRINCE EDWARD ISLAND":
+				return ProvinceTerr.PRINCEEDWARDISLAND;
+			case"NEW BRUNSWICK":
+				return ProvinceTerr.NEWBRUNSWICK;
+			case"QUEBEC":
+				return ProvinceTerr.QUEBEC;
+			case"MANITOBA":
+				return ProvinceTerr.MANITOBA;
+			case"SASKATCHEWAN":
+				return ProvinceTerr.SASKATCHEWAN;
+			case"ALBERTA":
+				return ProvinceTerr.ALBERTA;
+			case"BRITISH COLUMBIA":
+				return ProvinceTerr.BRITISHCOLUMBIA;
+			case"YUKON":
+				return ProvinceTerr.YUKON;
+			case"NORTH WEST TERRITORIES":
+				return ProvinceTerr.NORTHWESTTERRITORIES;
+			case"NUNAVUT":
+				return ProvinceTerr.NUNAVUT;
+			}
+		}
 	}
 }
 
