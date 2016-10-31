@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
-
 /**
  * 
  * @author Maryam Syeda
@@ -19,11 +18,10 @@ import java.util.Scanner;
  * 
  *
  */
-
 public class SchoolSystem {
-	static int option; //find a new place for this!!!
-	static Scanner scn = new Scanner (System.in);
-	static ArrayList <Student> studRecs = new ArrayList <Student> (); 
+	static int option; 
+	public static Scanner scn = new Scanner (System.in);
+	public static ArrayList <Student> studRecs = new ArrayList <Student> (); 
 	public static File studFile = new File ("src\\students.txt");
 	public static FileOutputStream fileOutputStream; 
 	public static BufferedReader fbr; 
@@ -68,6 +66,12 @@ public class SchoolSystem {
 					else if (option == 10){
 
 						System.out.println("Done.");
+						try {
+							fileOutputStream.close();
+						}
+						catch (IOException e){
+							e.printStackTrace();
+						}
 						System.exit(option);
 					}
 					else {
@@ -90,12 +94,10 @@ public class SchoolSystem {
 		}
 
 	}
-
 	/**
 	 * The method, studentFile() deals with creating a student file and
 	 * storing objects in it. 
 	 */
-
 	public static void studentFile() {
 		try {
 			fileOutputStream = new FileOutputStream ("src\\students.txt");
@@ -114,7 +116,6 @@ public class SchoolSystem {
 		}
 		fps = new PrintStream(fileOutputStream);
 	}
-
 	/**
 	 * The method addStudent, verifies the applicants age, 
 	 * collects the student information, creates a new student and stores
@@ -124,16 +125,12 @@ public class SchoolSystem {
 	 * not be saved.
 	 * 
 	 */
-
 	public static void addStudent () {
-
-		Student student = new Student(); // instantiation for a new student
-
+		//Student student = new Student(); // instantiation for a new student
 		int year;
 		boolean flag = false;
-
-		// Birth Year
 		System.out.println("Enter your birth year: ");
+		int birthYear = 0;
 		do {
 			try{
 				//student.setbyear(Integer.parseInt(scn.nextLine()));
@@ -158,7 +155,7 @@ public class SchoolSystem {
 					System.exit(exit);
 				}
 				else {
-					student.setbyear(year);
+					birthYear = year;
 				}
 
 				flag = false;
@@ -169,26 +166,17 @@ public class SchoolSystem {
 			}
 		}
 		while (flag);
-
-		//TODO: Use calender for the birthday information!
-
-		// Asking for the first name of student1
 		System.out.println("Please enter your first name: ");
-		student.setfirstName(scn.nextLine());
-
-		// Asking for the last name of student1
+		String fName = scn.nextLine();
 		System.out.println("Now enter your last name: ");
-		student.setlastName(scn.nextLine());
-
-		// Birth Month
+		String lName = scn.nextLine();
 		System.out.println("Enter your birth month: ");
-		student.setbmonth(scn.nextLine());
-
-		// Birth Day
+		String birthMonth = scn.nextLine();
 		System.out.println("Enter your birth day: ");
+		int birthDay = 0;
 		do { 
 			try{
-				student.setbday(Integer.parseInt(scn.nextLine()));
+				birthDay = Integer.parseInt(scn.nextLine());
 				flag = false;
 			}
 			catch (NumberFormatException e) {
@@ -197,55 +185,69 @@ public class SchoolSystem {
 			}
 		}
 		while (flag);
-
-
-		// Asking for the phone number
+		//String birthday = bmonth + " " + bday + " " + byear;
+		String pNum = null;
 		System.out.println("Now enter your 10 - digit phone number");
-		do {
-			try {
-				student.setphoneNum(Long.parseLong(scn.nextLine()));
-				flag = false;
+		do{
+			pNum = scn.nextLine();
+			if (pNum.length()==10){
+				for (int i = 0; i < 10; i++){
+					if(!tryNum(pNum.charAt(i))){
+						System.out.println("Please enter a real phone number.");
+						flag=true;
+						break;
+					}
+					if(i == 9){
+						flag = false;
+					}
+				}
 			}
-			catch (NumberFormatException e){
-				System.out.println("Please enter numbers only. Do not include dashes either. ");
-				flag = true;
+			else {
+				System.out.println("Please enter a real phone number.");
+				flag=true;
 			}
 		}
-		while (flag);
-
-
-		// Asking for the Street Address
-		System.out.println("Name of Home Street: ");
-		student.setstreetName(scn.nextLine());
-
-		// City
-		System.out.println("Enter city: ");
-		student.setcity(scn.nextLine());
-
-		// Province
+		while(flag);
+		System.out.println("Enter your address: ");
+		String homeAdd = scn.nextLine();
+		System.out.println("Enter your city: ");
+		String hCity = scn.nextLine();
 		System.out.println("Enter province: ");
-		//String studProv = (ProvinceTerr.valueOf(scn.nextLine()));
-		student.setprov (ProvinceTerr.valueOf(((scn.nextLine())).toUpperCase()));
-
-		// Postal Code
+		ProvinceTerr hProv = ProvinceTerr.valueOf(scn.nextLine().toUpperCase());
+		String hCode = null;
 		System.out.println("Enter your postal code: ");
-		student.setpostal((scn.nextLine()).toLowerCase());
+		do{
+			hCode = (scn.nextLine()).toLowerCase();
+			if (hCode.length() != 6) {
+				System.out.println("Please enter a valid postal code.");
+				flag = true;
+			}
+			flag=false;
+		}
+		while(flag);
 
-
-		//System.out.println("This is what you entered: " + student1.get);
-
-
-		student.setstudentNumber(IdGenerator++);
-		IdGenerator++; 
-		studRecs.add(student);
-		System.out.println("This is " + student.getFirstName() + "'s student id: " + student.getstudentNumber());
-		// should be able to display the student number
-
+		studRecs.add(new Student(fName, lName, pNum, homeAdd, hCity, hProv, hCode, birthMonth, birthDay, birthYear));
+		for (int i = 0; i < studRecs.size(); i++){
+			fps.println(studRecs.get(i).toString());
+		}
 		main(null);
+	}
+	/**
+	 * This method checks if the user inputed numbers
+	 * @param x
+	 * @return
+	 */
+	public static boolean tryNum (char x) {
+		if (x=='0'||x=='1'||x=='2'||x=='3'||x=='4'||x=='5'||x=='6'||x=='7'||x=='8'||x=='9'){
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	/**
-	 * 
+	 * This method finds a student on the file, using a last name search
 	 */
 
 	public static void findStud () {
@@ -339,7 +341,7 @@ public class SchoolSystem {
 	}
 
 	/**
-	 * 
+	 * This method prints all the students on file
 	 */         
 	public static void printAllStuds () {
 		String [] fbrValues = null;
@@ -362,12 +364,11 @@ public class SchoolSystem {
 		main(null);
 	}
 
-
-
 	/**
-	 * 
+	 * This method sorts all the students on file
 	 */
 	public static void sortStuds () {
+		//Collections.sort((studRecs <Student>));
 		Collections.sort(studRecs);
 		for (int i = 0; i < studRecs.size(); i++) {
 			System.out.println(studRecs.get(i).getFirstName());
@@ -381,9 +382,12 @@ public class SchoolSystem {
 			System.out.println(studRecs.get(i).getStudNumber());
 			System.out.println();
 		}
-
 	}
-
+	/**
+	 * This methods uses the enum class to check whether the user input was correct or not
+	 * @param input
+	 * @return
+	 */
 	public static ProvinceTerr provCheck(String input) {
 		while (true) {
 			switch (input) {
@@ -413,7 +417,11 @@ public class SchoolSystem {
 				return ProvinceTerr.NORTHWESTTERRITORIES;
 			case"NUNAVUT":
 				return ProvinceTerr.NUNAVUT;
-			}
+			} 
+		default: {
+			System.out.println("Please enter a real province!");
+			input = scn.nextLine();
+		}
 		}
 	}
 }

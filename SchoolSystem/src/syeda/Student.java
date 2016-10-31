@@ -4,7 +4,7 @@ public class Student implements Comparable{
 
 	private String firstName;
 	private String lastName;
-	private long phoneNum;
+	private String phoneNum;
 	private String streetName;
 	private String city;
 	private ProvinceTerr prov;
@@ -15,7 +15,7 @@ public class Student implements Comparable{
 	private static long IdGenerator = 300000000;
 	private static long studNumber = IdGenerator;
 
-	public Student(String fName, String lName, Long pNum, String homeAdd, String hCity, String hProv, String hCode, String birthMonth, int birthDay, int birthYear){
+	public Student(String fName, String lName, String pNum, String homeAdd, String hCity, ProvinceTerr hProv, String hCode, String birthMonth, int birthDay, int birthYear){
 		setFirstName(fName); 
 		setLastName(lName); 
 		setPhoneNum(pNum); 
@@ -29,7 +29,9 @@ public class Student implements Comparable{
 		setStudNumber(); 
 		//setIdGenerator(IdGenerator); // sets the student Id
 	}
-
+	public Student() {
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * 
 	 * @param firstName
@@ -62,14 +64,14 @@ public class Student implements Comparable{
 	 * 
 	 * @param phoneNum
 	 */
-	public void setPhoneNum(long phoneNum) {
+	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
 	/**
 	 * 
 	 * @return the phoneNum
 	 */
-	public long getPhoneNum() {
+	public String getPhoneNum() {
 		return this.phoneNum;
 	}
 	/**
