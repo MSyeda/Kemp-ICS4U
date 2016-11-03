@@ -369,7 +369,7 @@ public class SchoolSystem {
 	 */
 	public static void sortStuds () {
 		//Collections.sort((studRecs <Student>));
-		Collections.sort(studRecs);
+		Collections.sort((studRecs));
 		for (int i = 0; i < studRecs.size(); i++) {
 			System.out.println(studRecs.get(i).getFirstName());
 			System.out.println(studRecs.get(i).getLastName());
@@ -417,11 +417,11 @@ public class SchoolSystem {
 				return ProvinceTerr.NORTHWESTTERRITORIES;
 			case"NUNAVUT":
 				return ProvinceTerr.NUNAVUT;
-			} 
-		default: {
-			System.out.println("Please enter a real province!");
-			input = scn.nextLine();
-		}
+
+			default: 
+				System.out.println("Please enter a real province!");
+				input = scn.nextLine();
+			}
 		}
 	}
 }
