@@ -76,8 +76,8 @@ public class sorting {
 	}
 	public static void quickSort(int nums[], int start, int end){
 		int pivot = start;
-		int j = nums.length();
-		int i = nums.length();
+		int j = nums.length(); // the counter
+		int i = nums.length(); // the swapper
 		int temp = 0;
 		while(i < nums.length()){
 			while (j < nums.length()){
@@ -104,5 +104,4 @@ public class sorting {
 			pivot = nums[j];
 		}
 	}
-	
 }
