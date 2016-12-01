@@ -15,8 +15,16 @@ public class sorting {
 	 */
 	public static void main(String[] args) {
 		Scanner scn = new Scanner (System.in);
+		System.outprintln("Enter the number of allocations in your array: ")
+		int nums = Scn.nextInt();
+		String[] arr = new String[nums];
+		System.out.println("Enter your objects as prompted: ");
+		for(int i = 0; i < nums; i ++){
+			nums[i] = Scn.nextInt();
+		}
+
 		System.out.println("String, int or double?");
-		String ans = scn.nextLine();
+		String ans = scn.nextLine(); 
 		if(ans.equalsIgnoreCase("String")){
 			
 		}
@@ -32,18 +40,14 @@ public class sorting {
 //			nums[i] = scn.nextInt();
 //		}
 		//mergeSort(nums[size]);
-		mergeSort():
+		mergeSort(arr);
+		System.out.printline()
 	}
 
 	public static void mergeSort(int nums[], int start, int end) {
-		Scanner scn = new Scanner (System.in);
-		int size = scn.nextInt();
-		int nums[] = new int [size];
-		for(int i = 0; i < size; i++){
-			nums[i] = scn.nextInt();
-		}
+
 		int counter = 0;
-		if(counter == 1){
+		if(counter => 1){
 			for(int i = 0; i < nums.length; i++){
 				System.out.println(nums[i]);
 			}
@@ -65,6 +69,8 @@ public class sorting {
 		mergeSort(rightHalf);
 		
 		mergeSort(leftHalf, rightHalf);
+		merge(leftHalf, rightHalf);
+		main();
 	}
 
 	private static int merge(int nums[]){

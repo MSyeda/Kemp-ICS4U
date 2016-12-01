@@ -196,15 +196,6 @@ public class Student implements Comparable{
 	}
 	/**
 	 * 
-	 * @param j
-	 * @return
-	 */
-	public int compareTo(Object j) {
-		Student tempStudent = (Student)j;
-		return this.getLastName().compareTo(tempStudent.getLastName());
-	}
-	/**
-	 * 
 	 * @param search
 	 * @return
 	 */
@@ -215,6 +206,10 @@ public class Student implements Comparable{
 		else {
 			return false;
 		}
+	}
+	public int compareTo(Object arg0){
+		Student temp = (Student) arg0;
+		return this.getLastName().compareTo(temp.getLastName());
 	}
 }
 

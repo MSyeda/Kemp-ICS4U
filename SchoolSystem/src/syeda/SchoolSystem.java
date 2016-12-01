@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Scanner;
 /**
  * 
@@ -18,7 +17,7 @@ import java.util.Scanner;
  * 
  *
  */
-public class SchoolSystem {
+public class SchoolSystem{
 	static int option; 
 	public static Scanner scn = new Scanner (System.in);
 	public static ArrayList <Student> studRecs = new ArrayList <Student> (); 
@@ -298,6 +297,10 @@ public class SchoolSystem {
 			while(flag);
 		}
 	}
+	
+	public static void simpleMean () {
+		
+	}
 
 	/**
 	 * The searchStudent method searches for a student with the last name
@@ -369,7 +372,7 @@ public class SchoolSystem {
 	 */
 	public static void sortStuds () {
 		//Collections.sort((studRecs <Student>));
-		Collections.sort((studRecs));
+		Collections.sort(studRecs);
 		for (int i = 0; i < studRecs.size(); i++) {
 			System.out.println(studRecs.get(i).getFirstName());
 			System.out.println(studRecs.get(i).getLastName());
@@ -424,6 +427,8 @@ public class SchoolSystem {
 			}
 		}
 	}
+	
+	
 }
 
 
